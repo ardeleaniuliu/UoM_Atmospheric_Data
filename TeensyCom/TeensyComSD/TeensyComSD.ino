@@ -43,6 +43,7 @@ int temperature=0;
 float OP1=0;
 float OP2=0;
 float CO=0;
+int firstheartbeat=1;
     
 unsigned long previousMillis = 0;        // will store last time atmospheric data packet was sent
 // constants won't change :
@@ -99,7 +100,7 @@ void setup() {
 ADC::Sync_result result;
 
 void loop() {
-  // put your main code here, to run repeatedly:  
+   // put your main code here, to run repeatedly:  
     int incomingByte;
     int outgoingByte;
     unsigned long currentMillis = millis();
@@ -112,22 +113,33 @@ void loop() {
     // Read the first byte in the AP serial port buffer
     incomingByte = APSERIAL.read();
 
-   // if the data is a mavlink packet do the following
+    // if the data is a mavlink packet do the following
     if(mavlink_parse_char(MAVLINK_COMM_0, incomingByte, &msg, &status1)) {
 
-    // Read new mavlink packet
+      // Read new mavlink packet
       uint8_t buf[MAVLINK_MAX_PACKET_LEN];
       uint16_t len = mavlink_msg_to_send_buffer(buf, &msg);
     
-    // Send the packet received from the AP to the GCS through the telemetry module
+      // Send the packet received from the AP to the GCS through the telemetry module
       TELEMSERIAL.write(buf, len);
-    // Read the necessary data from the read packet
+      // Read the necessary data from the read packet
       switch(msg.msgid)
       {
               case MAVLINK_MSG_ID_HEARTBEAT:
               {
                 system_id=msg.sysid;
                 component_id=msg.compid;
+                
+                if (firstheartbeat == 1)
+                {
+                  mavlink_message_t rdsmsg;
+                  uint8_t buf[MAVLINK_MAX_PACKET_LEN];
+                  mavlink_msg_request_data_stream_pack(255, 0, &rdsmsg, 0, 0, 0, 20, 1);
+                  int16_t len = mavlink_msg_to_send_buffer(buf, &rdsmsg);
+                  APSERIAL.write(buf, len);
+                  
+                  firstheartbeat = 0;
+                }
                 break;
               }
               
@@ -196,8 +208,8 @@ void loop() {
     //ADC::Sync_result result = adc->analogSynchronizedRead(OP1pin, OP2pin);
     //Modify the calibration value according to the sensor you are using
     float CalibVal=0.439; //Calibration value to convert from voltage into ppb
-    OP1=(((result.result_adc0/adc->getMaxValue(ADC_0))*5)/CalibVal); //Converting the raw bit value into ppb equivalent 
-    OP2=(((result.result_adc1/adc->getMaxValue(ADC_1))*5)/CalibVal); //Converting the raw bit value into ppb equivalent
+    OP1=((((float)result.result_adc0/adc->getMaxValue(ADC_0))*5)/CalibVal); //Converting the raw bit value into ppb equivalent 
+    OP2=((((float)result.result_adc1/adc->getMaxValue(ADC_1))*5)/CalibVal); //Converting the raw bit value into ppb equivalent
 
     CO= OP1 - OP2 ; // Claculating the CO value in ppb
     
