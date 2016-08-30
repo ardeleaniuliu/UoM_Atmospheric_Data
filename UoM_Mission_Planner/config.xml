@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <comport>COM19</comport>
+  <baudrate>115200</baudrate>
+  <APMFirmware>ArduPlane</APMFirmware>
+  <fw_check>09-2-16</fw_check>
+  <APMFirmware>ArduPlane</APMFirmware>
+  <maplast_lat>0</maplast_lat>
+  <Tracker_TRK_tilttrim>0</Tracker_TRK_tilttrim>
+  <Tracker_TXT_tiltaccel>5</Tracker_TXT_tiltaccel>
+  <MainMaximised>Maximized</MainMaximised>
+  <rover_guid>74a07845-d328-451d-80af-15094bcd4dfc</rover_guid>
+  <FlightSplitter>358</FlightSplitter>
+  <Tracker_TXT_tiltspeed>100</Tracker_TXT_tiltspeed>
+  <advancedview>True</advancedview>
+  <NUM_tracklength>200</NUM_tracklength>
+  <guid>caf8f4a2-0f7e-4355-84a8-5b4ee0c2c984</guid>
+  <Tracker_CHK_revtilt>False</Tracker_CHK_revtilt>
+  <plane_guid>2fe619b5-0b0b-4504-94c3-fd52f5d13f71</plane_guid>
+  <menu_autohide>false</menu_autohide>
+  <maplast_lng>0</maplast_lng>
+  <kindexdate>09-2-16</kindexdate>
+  <COM19_BAUD>115200</COM19_BAUD>
+  <copter_guid>e485ca1a-21cc-4acf-a376-4595e2a7defa</copter_guid>
+  <Tracker_TXT_pwmrangepan>1000</Tracker_TXT_pwmrangepan>
+  <Tracker_TXT_panaccel>5</Tracker_TXT_panaccel>
+  <Tracker_CMB_serialport>COM19</Tracker_CMB_serialport>
+  <Tracker_TXT_panspeed>100</Tracker_TXT_panspeed>
+  <MainHeight>876</MainHeight>
+  <Tracker_TRK_pantrim>0</Tracker_TRK_pantrim>
+  <COM20_BAUD>57600</COM20_BAUD>
+  <Tracker_CMB_baudrate />
+  <Tracker_TXT_centerpan>1500</Tracker_TXT_centerpan>
+  <Tracker_TXT_centertilt>1500</Tracker_TXT_centertilt>
+  <Tracker_TXT_pwmrangetilt>1000</Tracker_TXT_pwmrangetilt>
+  <baudrate>115200</baudrate>
+  <Tracker_CHK_revpan>False</Tracker_CHK_revpan>
+  <update_check>09-2-16</update_check>
+  <Tracker_CMB_interface>Maestro</Tracker_CMB_interface>
+  <MainLocX>-8</MainLocX>
+  <MainWidth>1616</MainWidth>
+  <Tracker_TXT_tiltrange>90</Tracker_TXT_tiltrange>
+  <maplast_zoom>3</maplast_zoom>
+  <MainLocY>-8</MainLocY>
+  <comport>COM19</comport>
+  <Tuning_Graph_Selected>roll|pitch|nav_roll|nav_pitch|</Tuning_Graph_Selected>
+  <Tracker_TXT_panrange>360</Tracker_TXT_panrange>
+  <kindex>2</kindex>
+</Config>
